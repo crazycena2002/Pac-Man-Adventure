@@ -1,0 +1,315 @@
+/* ========================================
+   基本設定
+======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, "Noto Sans TC", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #050510;
+  color: #ffffff;
+}
+
+/* ========================================
+   開始畫面
+======================================== */
+
+.start-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+
+  background-image:
+    radial-gradient(circle at center, rgba(25, 45, 120, 0.35), transparent 60%),
+    linear-gradient(#050510, #000000);
+}
+
+/* ========================================
+   遊戲面板
+======================================== */
+
+.start-panel {
+  width: 100%;
+  max-width: 680px;
+
+  padding: 56px 32px;
+
+  text-align: center;
+
+  background-color: rgba(5, 5, 20, 0.9);
+
+  border: 4px solid #194dff;
+  border-radius: 24px;
+
+  box-shadow:
+    0 0 12px rgba(25, 77, 255, 0.9),
+    0 0 36px rgba(25, 77, 255, 0.5),
+    inset 0 0 24px rgba(25, 77, 255, 0.2);
+}
+
+.game-label {
+  margin: 0 0 16px;
+
+  color: #78a0ff;
+
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   標題
+======================================== */
+
+.game-title {
+  margin: 0;
+
+  color: #ffd800;
+
+  font-size: clamp(42px, 10vw, 88px);
+  line-height: 0.9;
+  letter-spacing: 4px;
+
+  text-shadow:
+    4px 4px 0 #ff8a00,
+    8px 8px 0 #b52800;
+}
+
+.game-title span {
+  display: block;
+}
+
+.game-title-sub {
+  margin-top: 20px;
+
+  color: #ffffff;
+
+  font-size: 0.38em;
+  letter-spacing: 10px;
+
+  text-shadow:
+    2px 2px 0 #194dff,
+    4px 4px 0 #0a257a;
+}
+
+/* ========================================
+   CSS Pac-Man
+======================================== */
+
+.pacman-logo {
+  position: relative;
+
+  width: 112px;
+  height: 112px;
+
+  margin: 48px auto;
+
+  border-radius: 50%;
+
+  background-image: conic-gradient(
+    from 45deg,
+    transparent 0deg 90deg,
+    #ffd800 90deg 360deg
+  );
+
+  filter: drop-shadow(0 0 14px rgba(255, 216, 0, 0.75));
+
+  animation: pacman-mouth 0.45s infinite alternate;
+}
+
+/* Pac-Man 的眼睛 */
+
+.pacman-logo::after {
+  content: "";
+
+  position: absolute;
+  top: 22px;
+  left: 50px;
+
+  width: 12px;
+  height: 12px;
+
+  background-color: #111111;
+  border-radius: 50%;
+}
+
+/* ========================================
+   開始按鈕
+======================================== */
+
+.start-button {
+  min-width: 240px;
+
+  padding: 16px 28px;
+
+  color: #050510;
+  background-color: #ffd800;
+
+  border: 0;
+  border-radius: 999px;
+
+  font: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 0 #c48600,
+    0 0 20px rgba(255, 216, 0, 0.5);
+
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    background-color 0.15s;
+}
+
+.start-button:hover {
+  background-color: #fff175;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 0 #c48600,
+    0 0 30px rgba(255, 216, 0, 0.8);
+}
+
+.start-button:active {
+  transform: translateY(6px);
+
+  box-shadow:
+    0 1px 0 #c48600,
+    0 0 12px rgba(255, 216, 0, 0.6);
+}
+
+.start-button:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 6px;
+}
+
+/* ========================================
+   操作說明
+======================================== */
+
+.instructions {
+  margin-top: 36px;
+
+  color: #cbd5ff;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.instructions p {
+  margin: 4px 0;
+}
+
+.version {
+  margin: 40px 0 0;
+
+  color: #70789e;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* ========================================
+   動畫
+======================================== */
+
+@keyframes pacman-mouth {
+  from {
+    clip-path: polygon(
+      50% 50%,
+      100% 15%,
+      100% 0,
+      0 0,
+      0 100%,
+      100% 100%,
+      100% 85%
+    );
+  }
+
+  to {
+    clip-path: polygon(
+      50% 50%,
+      100% 42%,
+      100% 0,
+      0 0,
+      0 100%,
+      100% 100%,
+      100% 58%
+    );
+  }
+}
+
+/* ========================================
+   手機版
+======================================== */
+
+@media (max-width: 576px) {
+  .start-screen {
+    padding: 16px;
+  }
+
+  .start-panel {
+    padding: 40px 20px;
+
+    border-width: 3px;
+    border-radius: 18px;
+  }
+
+  .game-title-sub {
+    letter-spacing: 5px;
+  }
+
+  .pacman-logo {
+    width: 88px;
+    height: 88px;
+
+    margin: 36px auto;
+  }
+
+  .pacman-logo::after {
+    top: 18px;
+    left: 40px;
+
+    width: 10px;
+    height: 10px;
+  }
+
+  .start-button {
+    min-width: 200px;
+
+    padding: 14px 20px;
+
+    font-size: 17px;
+  }
+}
+
+/* 使用者偏好減少動畫時，停止嘴巴動畫 */
+
+@media (prefers-reduced-motion: reduce) {
+  .pacman-logo {
+    animation: none;
+  }
+
+  .start-button {
+    transition: none;
+  }
+}

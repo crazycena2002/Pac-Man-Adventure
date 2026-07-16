@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="使用 HTML、CSS 與 JavaScript 製作的 Pac-Man Adventure 遊戲"
+    />
+
+    <title>Pac-Man Adventure</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <main class="start-screen">
+      <section class="start-panel">
+        <p class="game-label">HTML・CSS・JavaScript Game</p>
+
+        <h1 class="game-title">
+          <span>PAC-MAN</span>
+          <span class="game-title-sub">ADVENTURE</span>
+        </h1>
+
+        <!-- 使用 CSS 畫出 Pac-Man，目前不需要圖片 -->
+        <div class="pacman-logo" aria-hidden="true"></div>
+
+        <!-- 目前按鈕只有外觀，之後再使用 JavaScript加入功能 -->
+        <button class="start-button" type="button">Start Game</button>
+
+        <div class="instructions">
+          <p>使用方向鍵或 WASD 移動</p>
+          <p>吃完所有豆子即可過關</p>
+        </div>
+
+        <p class="version">Version 0.1.0</p>
+      </section>
+    </main>
+
+    <!-- main.js 現在可以保持空白，之後才會開始撰寫 -->
+    <script src="./js/main.js" defer></script>
+  </body>
+</html>
