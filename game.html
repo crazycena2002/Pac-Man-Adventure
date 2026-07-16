@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Pac-Man Adventure 的遊戲主畫面靜態版"
+    />
+
+    <title>Pac-Man Adventure - Game</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <main class="game-screen">
+      <section class="game-board-panel" aria-label="Pac-Man Adventure 遊戲主畫面">
+        <header class="game-hud">
+          <div class="hud-item">
+            <span class="hud-label">Score</span>
+            <span class="hud-value">0000</span>
+          </div>
+
+          <div class="hud-item">
+            <span class="hud-label">Lives</span>
+            <span class="life-list" aria-label="三條生命">
+              <span class="life-dot"></span>
+              <span class="life-dot"></span>
+              <span class="life-dot"></span>
+            </span>
+          </div>
+
+          <div class="hud-item">
+            <span class="hud-label">Level</span>
+            <span class="hud-value">01</span>
+          </div>
+        </header>
+
+        <div class="maze-wrap">
+          <div class="maze-grid" aria-label="第一關示範迷宮">
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell power-pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell power-pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pacman-cell">
+              <span class="maze-pacman" aria-label="Pac-Man"></span>
+            </div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell ghost-cell">
+              <span class="maze-ghost" aria-label="鬼魂"></span>
+            </div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell portal"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell fruit"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell portal"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell pellet"></div>
+            <div class="maze-cell wall"></div>
+
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+            <div class="maze-cell wall"></div>
+          </div>
+        </div>
+
+        <footer class="game-controls">
+          <p>方向鍵或 WASD 移動</p>
+          <p>P 暫停</p>
+        </footer>
+
+        <a class="home-link" href="./index.html">回到首頁</a>
+      </section>
+    </main>
+  </body>
+</html>

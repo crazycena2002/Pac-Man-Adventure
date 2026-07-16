@@ -151,6 +151,7 @@ body {
 ======================================== */
 
 .start-button {
+  display: inline-block;
   min-width: 240px;
 
   padding: 16px 28px;
@@ -166,6 +167,7 @@ body {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
+  text-decoration: none;
 
   cursor: pointer;
 
@@ -226,6 +228,320 @@ body {
 
   font-size: 12px;
   letter-spacing: 2px;
+}
+
+/* ========================================
+   遊戲主畫面
+======================================== */
+
+.game-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+  overflow-x: hidden;
+
+  background-image:
+    radial-gradient(circle at top, rgba(255, 216, 0, 0.14), transparent 34%),
+    linear-gradient(#050510, #000000);
+}
+
+.game-board-panel {
+  width: min(100%, 860px);
+
+  padding: 24px;
+
+  border: 4px solid #194dff;
+  border-radius: 22px;
+
+  background-color: rgba(4, 4, 18, 0.94);
+
+  box-shadow:
+    0 0 12px rgba(25, 77, 255, 0.85),
+    0 0 32px rgba(25, 77, 255, 0.42),
+    inset 0 0 24px rgba(25, 77, 255, 0.18);
+}
+
+/* ========================================
+   遊戲 HUD
+======================================== */
+
+.game-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 18px;
+  margin-bottom: 20px;
+
+  border: 2px solid #194dff;
+  border-radius: 14px;
+
+  background-color: #02020a;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  min-width: 0;
+
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hud-label {
+  color: #78a0ff;
+  text-transform: uppercase;
+}
+
+.hud-value {
+  color: #ffd800;
+}
+
+.life-list {
+  display: flex;
+  gap: 6px;
+}
+
+.life-dot {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background-image: conic-gradient(
+    from 45deg,
+    transparent 0deg 80deg,
+    #ffd800 80deg 360deg
+  );
+}
+
+/* ========================================
+   迷宮區域
+======================================== */
+
+.maze-wrap {
+  width: 100%;
+  overflow: hidden;
+
+  padding: 10px;
+
+  border: 2px solid #0a257a;
+  border-radius: 16px;
+
+  background-color: #000000;
+}
+
+.maze-grid {
+  width: min(100%, 690px);
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  justify-content: center;
+
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.maze-cell {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 0;
+
+  background-color: #02020a;
+}
+
+.maze-cell.wall {
+  background-color: #173dff;
+
+  box-shadow:
+    inset 0 0 0 2px #78a0ff,
+    inset 0 0 12px rgba(255, 255, 255, 0.22);
+}
+
+.maze-cell.pellet::after {
+  content: "";
+
+  width: 18%;
+  height: 18%;
+
+  border-radius: 50%;
+
+  background-color: #ffe9a6;
+}
+
+.maze-cell.power-pellet::after {
+  content: "";
+
+  width: 42%;
+  height: 42%;
+
+  border-radius: 50%;
+
+  background-color: #fff175;
+
+  box-shadow: 0 0 12px rgba(255, 241, 117, 0.9);
+}
+
+.maze-cell.fruit::after {
+  content: "";
+
+  width: 46%;
+  height: 46%;
+
+  border-radius: 50% 50% 46% 46%;
+
+  background-color: #ff3b47;
+
+  box-shadow: 0 -6px 0 -3px #28c76f;
+}
+
+.maze-cell.portal {
+  background-color: #02020a;
+}
+
+.maze-cell.portal::after {
+  content: "";
+
+  width: 72%;
+  height: 72%;
+
+  border: 3px solid #7a5cff;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 10px rgba(122, 92, 255, 0.95),
+    inset 0 0 10px rgba(122, 92, 255, 0.75);
+}
+
+/* ========================================
+   迷宮角色
+======================================== */
+
+.maze-pacman {
+  position: relative;
+
+  width: 72%;
+  height: 72%;
+
+  border-radius: 50%;
+
+  background-image: conic-gradient(
+    from 45deg,
+    transparent 0deg 82deg,
+    #ffd800 82deg 360deg
+  );
+
+  filter: drop-shadow(0 0 8px rgba(255, 216, 0, 0.75));
+}
+
+.maze-pacman::after {
+  content: "";
+
+  position: absolute;
+  top: 22%;
+  left: 48%;
+
+  width: 13%;
+  height: 13%;
+
+  border-radius: 50%;
+
+  background-color: #111111;
+}
+
+.maze-ghost {
+  position: relative;
+
+  width: 70%;
+  height: 72%;
+
+  border-radius: 50% 50% 12% 12%;
+
+  background-color: #ff4faf;
+
+  filter: drop-shadow(0 0 8px rgba(255, 79, 175, 0.8));
+}
+
+.maze-ghost::before {
+  content: "";
+
+  position: absolute;
+  inset: 26% 14% auto;
+
+  height: 22%;
+
+  background-image:
+    radial-gradient(circle at 25% center, #ffffff 0 28%, transparent 30%),
+    radial-gradient(circle at 75% center, #ffffff 0 28%, transparent 30%);
+}
+
+.maze-ghost::after {
+  content: "";
+
+  position: absolute;
+  right: 17%;
+  bottom: 0;
+  left: 17%;
+
+  height: 18%;
+
+  background-image: linear-gradient(
+    135deg,
+    transparent 0 33%,
+    #02020a 33% 47%,
+    transparent 47% 100%
+  );
+  background-size: 14px 100%;
+}
+
+/* ========================================
+   遊戲提示與導覽
+======================================== */
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+
+  margin-top: 18px;
+
+  color: #cbd5ff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.game-controls p {
+  margin: 0;
+}
+
+.home-link {
+  display: block;
+  width: fit-content;
+
+  margin: 22px auto 0;
+
+  color: #ffd800;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+  color: #fff175;
+  text-decoration: underline;
 }
 
 /* ========================================
@@ -299,6 +615,40 @@ body {
     padding: 14px 20px;
 
     font-size: 17px;
+  }
+
+  .game-screen {
+    align-items: flex-start;
+
+    padding: 14px;
+  }
+
+  .game-board-panel {
+    padding: 14px;
+
+    border-width: 3px;
+    border-radius: 18px;
+  }
+
+  .game-hud {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 12px;
+
+    font-size: 14px;
+  }
+
+  .maze-wrap {
+    padding: 6px;
+  }
+
+  .game-controls {
+    flex-direction: column;
+    gap: 6px;
+
+    text-align: center;
+    font-size: 14px;
   }
 }
 
