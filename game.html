@@ -2,202 +2,103 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <meta
       name="description"
-      content="Pac-Man Adventure 的遊戲主畫面靜態版"
+      content="使用原生 HTML、CSS 與 JavaScript 製作的 Pac-Man Adventure 遊戲"
     />
-
     <title>Pac-Man Adventure - Game</title>
-
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
     <main class="game-screen">
       <section class="game-board-panel" aria-label="Pac-Man Adventure 遊戲主畫面">
-        <header class="game-hud">
+        <header class="game-hud" aria-label="遊戲資訊">
           <div class="hud-item">
             <span class="hud-label">Score</span>
-            <span class="hud-value">0000</span>
+            <span id="scoreValue" class="hud-value">000000</span>
           </div>
 
           <div class="hud-item">
             <span class="hud-label">Lives</span>
-            <span class="life-list" aria-label="三條生命">
-              <span class="life-dot"></span>
-              <span class="life-dot"></span>
-              <span class="life-dot"></span>
-            </span>
+            <span id="livesValue" class="life-list" aria-label="剩餘三條生命"></span>
           </div>
 
           <div class="hud-item">
             <span class="hud-label">Level</span>
-            <span class="hud-value">01</span>
+            <span id="levelValue" class="hud-value">01</span>
           </div>
         </header>
 
         <div class="maze-wrap">
-          <div class="maze-grid" aria-label="第一關示範迷宮">
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
+          <div
+            id="mazeGrid"
+            class="maze-grid"
+            role="grid"
+            aria-label="Pac-Man 迷宮"
+          ></div>
 
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell power-pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell power-pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
+          <section id="statusOverlay" class="status-overlay" aria-live="polite" hidden>
+            <div class="status-card">
+              <h1 id="statusTitle">PAUSED</h1>
+              <p id="statusMessage"></p>
 
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
+              <div class="status-actions">
+                <button id="continueButton" class="game-button" type="button">
+                  Continue Game
+                </button>
+                <button id="nextLevelButton" class="game-button" type="button">
+                  Next Level
+                </button>
+                <button id="rewardButton" class="game-button" type="button">
+                  Watch Reward
+                </button>
+                <button id="restartButton" class="game-button" type="button">
+                  Try Again
+                </button>
+                <a id="homeButton" class="game-button secondary" href="./index.html">
+                  Back to Home
+                </a>
+              </div>
 
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pacman-cell">
-              <span class="maze-pacman" aria-label="Pac-Man"></span>
+              <div id="rewardVideo" class="reward-video" hidden>
+                <iframe
+                  id="rewardFrame"
+                  title="Pac-Man Adventure 通關獎勵影片"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell ghost-cell">
-              <span class="maze-ghost" aria-label="鬼魂"></span>
-            </div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-
-            <div class="maze-cell portal"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell fruit"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell portal"></div>
-
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell pellet"></div>
-            <div class="maze-cell wall"></div>
-
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-            <div class="maze-cell wall"></div>
-          </div>
+          </section>
         </div>
 
-        <footer class="game-controls">
-          <p>方向鍵或 WASD 移動</p>
-          <p>P 暫停</p>
-        </footer>
+        <p id="gameNotice" class="game-notice" aria-live="polite">
+          方向鍵或 WASD 移動，P 暫停
+        </p>
+
+        <section class="mobile-controls" aria-label="手機方向控制">
+          <button class="direction-button up" type="button" data-direction="up" aria-label="向上">
+            ▲
+          </button>
+          <button class="direction-button left" type="button" data-direction="left" aria-label="向左">
+            ◀
+          </button>
+          <button class="direction-button down" type="button" data-direction="down" aria-label="向下">
+            ▼
+          </button>
+          <button class="direction-button right" type="button" data-direction="right" aria-label="向右">
+            ▶
+          </button>
+        </section>
 
         <a class="home-link" href="./index.html">回到首頁</a>
       </section>
     </main>
+
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
